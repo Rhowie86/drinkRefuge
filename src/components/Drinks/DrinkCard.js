@@ -10,6 +10,6 @@ export const DrinkCard = ({ drink }) => {
           { drink.drinkName }
         </Link>
       </h3>
-      <div className="drink__category">{ drink.category.categoryName}</div>
+      <div className="drink__category">{ drink.category.categoryName }</div>
   </section>
 )}

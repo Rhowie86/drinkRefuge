@@ -16,7 +16,7 @@ export const DrinkProvider = (props) => {
     }
 
     const getDrinks = () => {
-        return fetch("http://localhost:8088/drinks?_expand=category&_expand=ingredient&_expand=measurement&_expand=glassware")
+        return fetch("http://localhost:8088/drinks?_embed=category")
         .then(res => res.json())
         .then(setDrinks)
     }

@@ -5,6 +5,7 @@ import { DrinkCard } from "./DrinkCard"
 import { GlasswareContext } from "../Glassware/GlasswareProvider"
 import { IngredientContext } from "../Ingredients/IngredientProvider"
 import { MeasurementContext } from "../Measurements/MeasurementProvider"
+import { CategoryContext } from "../Category/CategoryProvider"
 
 export const DrinkList = () => {
 
@@ -12,10 +13,16 @@ export const DrinkList = () => {
   const { measurement, getMeasurements } = useContext(MeasurementContext)
   const { ingredient, getIngredients } = useContext(IngredientContext)
   const { glassware, getGlassware } = useContext(GlasswareContext)
+  const { category, getCategory } = useContext(CategoryContext)
 
 
   useEffect(() => {
     getDrinks()
+    .then(getCategory)
+    .then(getGlassware)
+    .then(getIngredients)
+    .then(getMeasurements)
+
 
 
   }, [])
@@ -27,11 +34,8 @@ export const DrinkList = () => {
 
   return (
       <>
-            <h2>Cocktail List</h2>
-                <button onClick={() => {history.push("/drinks/create")}}>
-                    Add a drink recipe
-                </button>
 
+            <h2>Cocktail List</h2>
                 <div className="drinks">
                 {
         drinks.map(bev => {
@@ -41,7 +45,11 @@ export const DrinkList = () => {
                     
                      />
         })
-      }
+    }
+ 
+                <button className="btn btn-success" onClick={() => {history.push("/drinks/create")}}>
+                    Add a drink recipe
+                </button>
 
                 </div>
     </>
