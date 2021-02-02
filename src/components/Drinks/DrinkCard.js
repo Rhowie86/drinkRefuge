@@ -7,9 +7,9 @@ export const DrinkCard = ({ drink }) => {
     <section className="drink">
       <h3 className="drink__name">
         <Link to={`/drinks/detail/${drink.id}`}>
-          { drink.name }
+          { drink.drinkName }
         </Link>
       </h3>
-      <div className="drink__category">{ drink.categories.categoryName}</div>
+      <div className="drink__category">{ drink.category.categoryName}</div>
   </section>
 )}
