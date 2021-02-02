@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 
 
 export const DrinkCard = ({ drink }) => {
+
   return (
     <section className="drink">
       <h3 className="drink__name">
@@ -10,6 +11,6 @@ export const DrinkCard = ({ drink }) => {
           { drink.drinkName }
         </Link>
       </h3>
-      <div className="drink__category">{ drink.category.categoryName }</div>
+      <div className="drink__category">{ drink.category?.categoryName }</div>
   </section>
 )}
