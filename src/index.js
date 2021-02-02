@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from "react-router-dom"
 import { Refuge } from "./refuge.js"
-import 'bootstrap/dist/css/bootstap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 import './index.css';
 
