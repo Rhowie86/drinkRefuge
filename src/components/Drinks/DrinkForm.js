@@ -22,7 +22,7 @@ export const DrinkForm = () => {
     drinkName: "",
     glasswareId: 0,
     categoryId: 0,
-    usersId: 0,
+    userId: 0,
   });
   const [isLoading, setIsLoading] = useState(true);
 
@@ -63,14 +63,14 @@ export const DrinkForm = () => {
           drinkName: drink.drinkName,
           glasswareId: parseInt(drink.glasswareId),
           categoryId: parseInt(drink.categoryId),
-          customerId: parseInt(drink.usersId),
+          userId: parseInt(drink.userId),
         }).then(() => history.push(`/drinks/detail/${drink.id}`));
       } else {
         addDrink({
           drinkName: drink.drinkName,
           glasswareId: parseInt(drink.glasswareId),
           categoryId: parseInt(drink.categoryId),
-          customerId: parseInt(drink.usersId),
+          userId: parseInt(drink.userId),
         }).then(() => history.push("/drinks"));
       }
     }
@@ -101,7 +101,7 @@ export const DrinkForm = () => {
           <label htmlFor="name">Drink name:</label>
           <input
             type="text"
-            id="name"
+            id="drinkName"
             onChange={handleControlledInputChange}
             required
             autoFocus
@@ -113,7 +113,7 @@ export const DrinkForm = () => {
       </fieldset>
       <fieldset>
         <div className="form-group">
-          <label htmlFor="location">Glassware: </label>
+          <label htmlFor="glassware">Glassware: </label>
           <select
             defaultValue={drink.glasswareId}
             onChange={handleControlledInputChange}
@@ -132,7 +132,7 @@ export const DrinkForm = () => {
       </fieldset>
       <fieldset>
         <div className="form-group">
-          <label htmlFor="customerId">Ingredient: </label>
+          <label htmlFor="ingredientId">Ingredient: </label>
           <select
             defaultValue={drink.ingredientId}
             onChange={handleControlledInputChange}
@@ -151,7 +151,7 @@ export const DrinkForm = () => {
       </fieldset>
       <fieldset>
         <div className="form-group">
-          <label htmlFor="customerId">Measurement: </label>
+          <label htmlFor="measurementId">Measurement: </label>
           <select
             defaultValue={drink.measurementId}
             onChange={handleControlledInputChange}
@@ -170,7 +170,7 @@ export const DrinkForm = () => {
       </fieldset>
       <fieldset>
         <div className="form-group">
-          <label htmlFor="customerId">Category: </label>
+          <label htmlFor="categoryId">Category: </label>
           <select
             defaultValue={drink.categoryId}
             onChange={handleControlledInputChange}

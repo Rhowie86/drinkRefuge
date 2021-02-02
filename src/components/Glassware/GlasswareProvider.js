@@ -9,7 +9,7 @@ export const GlasswareProvider = (props) => {
     const [glassware, setGlassware] = useState([])
 
     const getGlassware = () => {
-        return fetch("http://localhost:8088/glassware")
+        return fetch("http://localhost:8088/glasswares")
         .then(res => res.json())
         .then(setGlassware)
     }
