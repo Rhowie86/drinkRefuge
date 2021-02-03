@@ -24,6 +24,9 @@ export const DrinkForm = () => {
     categoryId: 0,
     userId: 0,
   });
+
+  const [ingredients, setIngredients] = useState([])
+
   const [isLoading, setIsLoading] = useState(true);
 
   const { drinkId } = useParams();
