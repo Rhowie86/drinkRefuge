@@ -42,7 +42,7 @@ export const DrinkForm = () => {
     ingredientId: 0,
     measurementId: 0
   })
-//   console.log("testing", drinkIngredients)
+
   const [isLoading, setIsLoading] = useState(true);
 
   const { drinkId } = useParams();
@@ -86,7 +86,6 @@ export const DrinkForm = () => {
 
   const handleAddFields = () => {
     const values = [...ingredientFields];
-    console.log("ingredient fields", ingredientFields)
     values.push({ id: 0 });
     setIngredientFields(values);
   };
@@ -124,31 +123,20 @@ export const DrinkForm = () => {
         })
         
         .then((newDrink) => {
-            console.log("new drink test", drinkIngredients)
-        let arrayIngredients = []
-        drinkIngredients.map((ingredient) => {
-            arrayIngredients.push(ingredient)
-            arrayIngredients.map((arrayIngredient) => {
-                console.log("arrayIngredient check", arrayIngredient)
-                addDrinkIngredient({
-                    drinkId: newDrink.id,
-                    ingredientId: parseInt(arrayIngredient.ingredientId),
-                    measurementId: parseInt(arrayIngredient.measurementId)
-                })
-                // })
-            })
-        })
+          drinkIngredients.forEach((ingredient) => {
+              addDrinkIngredient({
+                  drinkId: newDrink.id,
+                  ingredientId: parseInt(ingredient.ingredientId),
+                  measurementId: parseInt(ingredient.measurementId)
+              })
+          })
+      })
 
-        })
-        // .then((newDrink) => { addDrinkIngredient({
-        //     drinkId: newDrink.id,
-        //     ingredientId: parseInt(drinkIngredients[0].ingredientId),
-        //     measurementId: parseInt(drinkIngredients[0].measurementId)
-        // })})
+
+
+        
         .then(() => history.push("/drinks"));
-      }
-    }
-  };
+    }}}
 
 
 
@@ -168,7 +156,7 @@ export const DrinkForm = () => {
   }, []);
 
   return (
-    <form className="drinkForm">
+    <div>
       <h2 className="drinkForm__title">
         {drinkId ? "Edit Drink" : "Add Drink"}
       </h2>
@@ -301,6 +289,6 @@ export const DrinkForm = () => {
       >
         {drinkId ? "Save Drink" : "Add Drink"}
       </button>
-    </form>
+    </div>
   );
 };
