@@ -6,6 +6,7 @@ import { GlasswareContext } from "../Glassware/GlasswareProvider"
 import { IngredientContext } from "../Ingredients/IngredientProvider"
 import { MeasurementContext } from "../Measurements/MeasurementProvider"
 import { CategoryContext } from "../Category/CategoryProvider"
+import { UserContext } from "../Users/UserProvider"
 
 export const DrinkList = () => {
 
@@ -14,6 +15,7 @@ export const DrinkList = () => {
   const { ingredient, getIngredients } = useContext(IngredientContext)
   const { glassware, getGlassware } = useContext(GlasswareContext)
   const { category, getCategory } = useContext(CategoryContext)
+  const { user, getUsers } = useContext(UserContext)
 
 
   useEffect(() => {
@@ -22,11 +24,12 @@ export const DrinkList = () => {
     .then(getGlassware)
     .then(getIngredients)
     .then(getMeasurements)
-    
+    .then(getUsers)
 
 
 
   }, [])
+
 
 
 
