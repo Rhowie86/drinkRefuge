@@ -11,6 +11,7 @@ export const DrinkProvider = (props) => {
     const [drinks, setDrinks] = useState([])
 
     const getDrinkById = (id) => {
+        console.log("test", id)
         return fetch(`http://localhost:8088/drinks/${id}?_expand=user&_expand=glassware&_expand=category`)
             .then(res => res.json())
     }
@@ -19,6 +20,7 @@ export const DrinkProvider = (props) => {
         return fetch("http://localhost:8088/drinks?_expand=category")
         .then(res => res.json())
         .then(setDrinks)
+        
     }
 
     const addDrink = drinkObj => {

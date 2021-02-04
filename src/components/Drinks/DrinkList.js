@@ -22,6 +22,7 @@ export const DrinkList = () => {
     .then(getGlassware)
     .then(getIngredients)
     .then(getMeasurements)
+    
 
 
 
