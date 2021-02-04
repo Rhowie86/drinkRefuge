@@ -120,7 +120,7 @@ export const DrinkForm = () => {
           drinkName: drink.drinkName,
           glasswareId: parseInt(drink.glasswareId),
           categoryId: parseInt(drink.categoryId),
-          userId: parseInt(drink.userId),
+          userId: parseInt(localStorage.getItem("refuge_user")),
         })
         
         .then((newDrink) => {
@@ -290,6 +290,7 @@ export const DrinkForm = () => {
           </select>
         </div>
       </fieldset>
+      
       <button
         className="btn btn-success"
         disabled={isLoading}

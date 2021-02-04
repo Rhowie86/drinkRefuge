@@ -50,7 +50,10 @@ export const DrinkDetail = () => {
                     })
                 }
                 </ul>
-            
+            <div className="drinks__user">
+                <h4>Created by: {drinks.user?.name}</h4>
+                {console.log("users?", drinks.user?.name)}
+            </div>
               
             </div>
             <button onClick={() => {history.push(`/drinks/edit/${drinks.id}`)}}>
