@@ -22,6 +22,7 @@ export const DrinkList = () => {
     .then(getGlassware)
     .then(getIngredients)
     .then(getMeasurements)
+    
 
 
 
@@ -35,7 +36,7 @@ export const DrinkList = () => {
   return (
       <>
 
-            <h2>Cocktail List</h2>
+            <h2>Cocktail Recipe List</h2>
                 <div className="drinks">
                 {
         drinks.map(bev => {

@@ -11,6 +11,7 @@ export const DrinkCard = ({ drink }) => {
           { drink.drinkName }
         </Link>
       </h3>
-      <div className="drink__category">{ drink.category?.categoryName }</div>
+      <div className="drink__category">Category: { drink.category?.categoryName } drink</div>
+      <div className="user__name">Created by: </div>
   </section>
 )}

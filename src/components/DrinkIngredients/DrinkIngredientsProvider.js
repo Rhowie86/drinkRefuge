@@ -8,19 +8,30 @@ export const DrinkIngredientContext = createContext()
 
 
 export const DrinkIngredientProvider = (props) => {
-    const [recipe, setRecipeDetails] = useState([])
+    const [drinkIngredients, setDrinkIngredients] = useState([])
 
     const getDrinkIngredients = () => {
-        return fetch("http://localhost:8088/drinkIngredients")
+        return fetch("http://localhost:8088/drinkIngredients?_expand=ingredient&_expand=measurement")
         .then(res => res.json())
-        .then(setRecipeDetails)
+        .then(setDrinkIngredients)
     }
 
-
+    const addDrinkIngredient = ingredientObj => {
+        return fetch("http://localhost:8088/drinkIngredients", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(ingredientObj)
+        })
+        .then(getDrinkIngredients)
+    
+     
+    }
     
     return (
         <DrinkIngredientContext.Provider value={{
-            recipe, getDrinkIngredients
+            drinkIngredients, getDrinkIngredients, addDrinkIngredient
         }}>
             {props.children}
         </DrinkIngredientContext.Provider>

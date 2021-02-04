@@ -11,14 +11,16 @@ export const DrinkProvider = (props) => {
     const [drinks, setDrinks] = useState([])
 
     const getDrinkById = (id) => {
-        return fetch(`http://localhost:8088/drinks/${id}`)
+        console.log("test", id)
+        return fetch(`http://localhost:8088/drinks/${id}?_expand=user&_expand=glassware&_expand=category`)
             .then(res => res.json())
     }
 
     const getDrinks = () => {
-        return fetch("http://localhost:8088/drinks?_expand=category&_expand=category&_")
+        return fetch("http://localhost:8088/drinks?_expand=category")
         .then(res => res.json())
         .then(setDrinks)
+        
     }
 
     const addDrink = drinkObj => {
@@ -29,7 +31,11 @@ export const DrinkProvider = (props) => {
             },
             body: JSON.stringify(drinkObj)
         })
-        .then(getDrinks)
+        .then((newDrink => newDrink.json()))
+        .then(drink => {
+            getDrinks()
+            return drink
+        })
     
      
     }

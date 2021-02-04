@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, Fragment } from "react";
 import { DrinkContext } from "./DrinkProvider";
 import { UserContext } from "../Users/UserProvider";
 import { GlasswareContext } from "../Glassware/GlasswareProvider";
 import { IngredientContext } from "../Ingredients/IngredientProvider";
 import { MeasurementContext } from "../Measurements/MeasurementProvider";
 import { CategoryContext } from "../Category/CategoryProvider";
+import { DrinkIngredientContext } from "../DrinkIngredients/DrinkIngredientsProvider"
 
 import { useHistory, useParams } from "react-router-dom";
 
@@ -17,6 +18,17 @@ export const DrinkForm = () => {
   const { ingredient, getIngredients } = useContext(IngredientContext);
   const { glassware, getGlassware } = useContext(GlasswareContext);
   const { category, getCategory } = useContext(CategoryContext);
+  const { drinkIngredient, getDrinkIngredients, addDrinkIngredient } = useContext(DrinkIngredientContext)
+
+  const [ingredientFields, setIngredientFields] = useState([
+    { 
+        id: 0,
+        ingredientId: 0,
+        measurementId: 0,
+        drinkId: 0
+     }
+  ]);
+
 
   const [drink, setDrink] = useState({
     drinkName: "",
@@ -24,6 +36,13 @@ export const DrinkForm = () => {
     categoryId: 0,
     userId: 0,
   });
+
+  const [drinkIngredients, setDrinkIngredients] = useState({
+    drinkId: 0,
+    ingredientId: 0,
+    measurementId: 0
+  })
+
   const [isLoading, setIsLoading] = useState(true);
 
   const { drinkId } = useParams();
@@ -35,7 +54,8 @@ export const DrinkForm = () => {
       .then(getGlassware)
       .then(getIngredients)
       .then(getMeasurements)
-      .then(getCategory);
+      .then(getCategory)
+      .then(getDrinkIngredients);
   }, []);
 
   const handleControlledInputChange = (event) => {
@@ -50,6 +70,35 @@ export const DrinkForm = () => {
 
     setDrink(newDrink);
   };
+
+  const handleControlledInputChangeIngredient = (index, event) => {
+    const values = [...ingredientFields];
+    if (event.target.name === "ingredient") {
+      values[index].ingredientId = event.target.value;
+    } else {
+      values[index].measurementId = event.target.value;
+    }
+
+    setDrinkIngredients(values);
+  };
+  
+  
+
+  const handleAddFields = () => {
+    const values = [...ingredientFields];
+    values.push({ id: 0, ingredientName: "" });
+    setIngredientFields(values);
+  };
+
+  const handleRemoveFields = index => {
+    const values = [...ingredientFields];
+    if (values.length === 1){
+        return;
+    } else
+    values.splice(index, 1);
+    setIngredientFields(values);
+  };
+
 
   const handleSaveDrink = () => {
     if (parseInt(drink.id) === 0) {
@@ -71,10 +120,20 @@ export const DrinkForm = () => {
           glasswareId: parseInt(drink.glasswareId),
           categoryId: parseInt(drink.categoryId),
           userId: parseInt(drink.userId),
-        }).then(() => history.push("/drinks"));
+        })
+        
+        
+        .then((newDrink) => { addDrinkIngredient({
+            drinkId: newDrink.id,
+            ingredientId: parseInt(drinkIngredients[0].ingredientId),
+            measurementId: parseInt(drinkIngredients[0].measurementId)
+        })})
+        .then(() => history.push("/drinks"));
       }
     }
   };
+
+
 
   useEffect(() => {
     getDrinks()
@@ -97,7 +156,7 @@ export const DrinkForm = () => {
         {drinkId ? "Edit Drink" : "Add Drink"}
       </h2>
       <fieldset>
-        <div className="form-group">
+        <div className="form-group col-sm-6">
           <label htmlFor="name">Drink name:</label>
           <input
             type="text"
@@ -112,7 +171,7 @@ export const DrinkForm = () => {
         </div>
       </fieldset>
       <fieldset>
-        <div className="form-group">
+        <div className="form-group col-sm-6">
           <label htmlFor="glassware">Glassware: </label>
           <select
             defaultValue={drink.glasswareId}
@@ -131,14 +190,18 @@ export const DrinkForm = () => {
         </div>
       </fieldset>
       <fieldset>
-        <div className="form-group">
-          <label htmlFor="ingredientId">Ingredient: </label>
-          <select
+                <div className="form-row">
+      {ingredientFields.map((ingredientField, index) => (
+            <Fragment key={`${ingredientField}~${index}`}>
+              <div className="form-group col-sm-6">
+                <label htmlFor="ingredientId">Ingredient: </label>
+                <select
             defaultValue={drink.ingredientId}
-            onChange={handleControlledInputChange}
+            onChange={event => handleControlledInputChangeIngredient(index, event)}
             name="ingredient"
             id="ingredientId"
             className="form-control"
+            
           >
             <option value="0">Select an ingredient</option>
             {ingredient.map((i) => (
@@ -146,18 +209,16 @@ export const DrinkForm = () => {
                 {i.ingredientName}
               </option>
             ))}
-          </select>
-        </div>
-      </fieldset>
-      <fieldset>
+          </select> 
         <div className="form-group">
           <label htmlFor="measurementId">Measurement: </label>
           <select
             defaultValue={drink.measurementId}
-            onChange={handleControlledInputChange}
+            onChange={event => handleControlledInputChangeIngredient(index, event)}
             name="measurement"
             id="measurementId"
             className="form-control"
+            
           >
             <option value="0">Select a measurement</option>
             {measurement.map((m) => (
@@ -167,9 +228,34 @@ export const DrinkForm = () => {
             ))}
           </select>
         </div>
+              </div>
+              <div className="form-group col-sm-2">
+                <button
+                  className="btn btn-link"
+                  type="button"
+                  onClick={() => handleRemoveFields(index)}
+                >
+                  -
+                </button>
+                <button
+                  className="btn btn-link"
+                  type="button"
+                  onClick={() => handleAddFields()}
+                >
+                  +
+                </button>
+              </div>
+            </Fragment>
+          ))}
+        </div>
+          
+       
+        
       </fieldset>
       <fieldset>
-        <div className="form-group">
+      </fieldset>
+      <fieldset>
+        <div className="form-group col-sm-6">
           <label htmlFor="categoryId">Category: </label>
           <select
             defaultValue={drink.categoryId}
