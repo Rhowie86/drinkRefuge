@@ -21,11 +21,6 @@
 5. garnish
 6. category
 
-### Adding an ingredient
-- **Given** a user wants to add an ingredient to the selction
-- **WHEN** a user clicks the add an ingredient button
-- **THEN** a modal will display with text input to add an ingredient to the list
-
 
 ### Viewing drink details
 - **GIVEN** a user wants to view an individual drink recipe
