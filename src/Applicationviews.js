@@ -12,6 +12,7 @@ import { IngredientProvider } from "./components/Ingredients/IngredientProvider"
 import { MeasurementProvider } from "./components/Measurements/MeasurementProvider"
 import { CategoryProvider } from "./components/Category/CategoryProvider";
 import { DrinkIngredientProvider } from "./components/DrinkIngredients/DrinkIngredientsProvider";
+import { UserDrinkList } from "./components/Drinks/UserDrinkList"
 
 
 
@@ -36,6 +37,9 @@ export const ApplicationViews = () => {
           </Route>
           <Route path="/drinks/detail/:drinkId(\d+)">
               <DrinkDetail />
+          </Route>
+          <Route exact path ="/userDrinks">
+              <UserDrinkList />
           </Route>
                             </DrinkIngredientProvider>
                         </CategoryProvider>
