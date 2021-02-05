@@ -10,7 +10,6 @@ export const DrinkCard = ({ drink }) => {
       <div className="drink__category">
         Category: {drink.category?.categoryName} drink
       </div>
-      
     </section>
   );
 };

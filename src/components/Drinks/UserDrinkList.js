@@ -7,17 +7,17 @@ import { UserContext } from "../Users/UserProvider";
 export const UserDrinkList = () => {
   const { drinks, getDrinks } = useContext(DrinkContext);
   const { user, getUsers } = useContext(UserContext);
-  const userId = parseInt(localStorage.getItem("refuge_user"))
+  const userId = parseInt(localStorage.getItem("refuge_user"));
 
   useEffect(() => {
-    getDrinks()
-      .then(getUsers);
+    getDrinks().then(getUsers);
   }, []);
 
   const history = useHistory();
 
   const currentUserDrinks = drinks.filter(
-      (userDrink) => userId === userDrink.userId)
+    (userDrink) => userId === userDrink.userId
+  );
 
   return (
     <>
@@ -36,12 +36,13 @@ export const UserDrinkList = () => {
           Add a drink recipe
         </button>
         <button
-            className="btn btn-primary"
-            onClick={() => {
-                history.push("/drinks")
-            }}>
-                Back
-            </button>
+          className="btn btn-primary"
+          onClick={() => {
+            history.push("/drinks");
+          }}
+        >
+          Back
+        </button>
       </div>
     </>
   );

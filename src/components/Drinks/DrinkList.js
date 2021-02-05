@@ -10,58 +10,54 @@ export const DrinkList = () => {
   const { category, getCategory } = useContext(CategoryContext);
   const { user, getUsers } = useContext(UserContext);
 
-  const [filteredCategory, setFilteredCategory] = useState(0)
+  const [filteredCategory, setFilteredCategory] = useState(0);
 
   const handleControlledInputChange = (event) => {
-    const selectedCategory = filteredCategory ;
+    const selectedCategory = filteredCategory;
     let selectedVal = event.target.value;
 
     if (event.target.id.includes("Id")) {
       selectedVal = parseInt(selectedVal);
     }
 
-    setFilteredCategory(selectedVal)
-    
-  }; 
+    setFilteredCategory(selectedVal);
+  };
   useEffect(() => {
-    getDrinks()
-      .then(getCategory)
-      .then(getUsers);
+    getDrinks().then(getCategory).then(getUsers);
   }, []);
 
-  const [ chosenCategory, setChosenCategory] = useState([])
-
-
+  const [chosenCategory, setChosenCategory] = useState([]);
 
   useEffect(() => {
     if (filteredCategory === 0) {
-      setChosenCategory(drinks)
-    } else {  
-    setChosenCategory(drinks.filter((drink) => drink.categoryId === filteredCategory)) } 
+      setChosenCategory(drinks);
+    } else {
+      setChosenCategory(
+        drinks.filter((drink) => drink.categoryId === filteredCategory)
+      );
+    }
   }, [filteredCategory, drinks]);
 
   const history = useHistory();
-
-  
 
   return (
     <>
       <h2>Cocktail Recipe List</h2>
       <div className="category-sort">
-      <select
-            defaultValue={0}
-            onChange={handleControlledInputChange}
-            name="categoryId"
-            id="categoryId"
-            className="form-control"
-          >
-            <option value="0">Select a category</option>
-            {category.map((c) => (
-              <option key={c.id} value={c.id}>
-                {c.categoryName}
-              </option>
-            ))}
-          </select>
+        <select
+          defaultValue={0}
+          onChange={handleControlledInputChange}
+          name="categoryId"
+          id="categoryId"
+          className="form-control"
+        >
+          <option value="0">Select a category</option>
+          {category.map((c) => (
+            <option key={c.id} value={c.id}>
+              {c.categoryName}
+            </option>
+          ))}
+        </select>
       </div>
       <div className="drinks">
         {chosenCategory.map((bev) => {
@@ -79,12 +75,12 @@ export const DrinkList = () => {
         <button
           className="btn btn-primary"
           onClick={() => {
-            history.push("/userDrinks")
-          }}>
-            View My Drinks
-          </button>
+            history.push("/userDrinks");
+          }}
+        >
+          View My Drinks
+        </button>
       </div>
     </>
   );
-        
 };
