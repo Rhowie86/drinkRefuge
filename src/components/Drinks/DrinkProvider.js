@@ -11,7 +11,6 @@ export const DrinkProvider = (props) => {
     const [drinks, setDrinks] = useState([])
 
     const getDrinkById = (id) => {
-        console.log("test", id)
         return fetch(`http://localhost:8088/drinks/${id}?_expand=user&_expand=glassware&_expand=category`)
             .then(res => res.json())
     }
@@ -40,13 +39,6 @@ export const DrinkProvider = (props) => {
      
     }
 
-    const deleteDrink = drinkId => {
-        return fetch(`http://localhost:8088/drinks/${drinkId}`, {
-            method: "DELETE"
-        })
-            .then(getDrinks)
-    }
-
     const updateDrink = drinkObj => {
         return fetch(`http://localhost:8088/drinks/${drinkObj.id}`, {
           method: "PUT",
@@ -57,6 +49,13 @@ export const DrinkProvider = (props) => {
         })
           .then(getDrinks)
       }
+
+      const deleteDrink = drinkId => {
+        return fetch(`http://localhost:8088/drinks/${drinkId}`, {
+            method: "DELETE"
+        })
+            .then(getDrinks)
+    }
  
    return (
     <DrinkContext.Provider value={{

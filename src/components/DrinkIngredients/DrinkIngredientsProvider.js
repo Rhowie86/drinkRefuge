@@ -13,7 +13,12 @@ export const DrinkIngredientProvider = (props) => {
     const getDrinkIngredients = () => {
         return fetch("http://localhost:8088/drinkIngredients?_expand=ingredient&_expand=measurement")
         .then(res => res.json())
+        .then(drinkIng => {
+            return drinkIng
+        })
         .then(setDrinkIngredients)
+        
+
     }
 
     const addDrinkIngredient = ingredientObj => {
@@ -25,13 +30,18 @@ export const DrinkIngredientProvider = (props) => {
             body: JSON.stringify(ingredientObj)
         })
         .then(getDrinkIngredients)
-    
-     
+    }
+
+    const deleteDrinkIngredient = drinkId => {
+        return fetch(`http://localhost:8088/drinkIngredients/${drinkId}`, {
+            method: "DELETE"
+        })
+            .then(getDrinkIngredients)
     }
     
     return (
         <DrinkIngredientContext.Provider value={{
-            drinkIngredients, getDrinkIngredients, addDrinkIngredient
+            drinkIngredients, getDrinkIngredients, addDrinkIngredient, deleteDrinkIngredient
         }}>
             {props.children}
         </DrinkIngredientContext.Provider>
