@@ -10,21 +10,47 @@ export const DrinkList = () => {
   const { category, getCategory } = useContext(CategoryContext);
   const { user, getUsers } = useContext(UserContext);
 
+  const [filteredCategory, setFilteredCategory] = useState(0)
+
+  const handleControlledInputChange = (event) => {
+    const selectedCategory = filteredCategory ;
+    let selectedVal = event.target.value;
+
+    if (event.target.id.includes("Id")) {
+      selectedVal = parseInt(selectedVal);
+    }
+
+    setFilteredCategory(selectedVal)
+    
+  }; 
   useEffect(() => {
     getDrinks()
       .then(getCategory)
       .then(getUsers);
   }, []);
 
+  const [ chosenCategory, setChosenCategory] = useState([])
+
+
+
+  useEffect(() => {
+    if (filteredCategory === 0) {
+      setChosenCategory(drinks)
+    } else {  
+    setChosenCategory(drinks.filter((drink) => drink.categoryId === filteredCategory)) } 
+  }, [filteredCategory, drinks]);
+
   const history = useHistory();
+
+  
 
   return (
     <>
       <h2>Cocktail Recipe List</h2>
       <div className="category-sort">
       <select
-            defaultValue={drinks.categoryId}
-            // onChange={handleControlledInputChange}
+            defaultValue={0}
+            onChange={handleControlledInputChange}
             name="categoryId"
             id="categoryId"
             className="form-control"
@@ -38,7 +64,7 @@ export const DrinkList = () => {
           </select>
       </div>
       <div className="drinks">
-        {drinks.map((bev) => {
+        {chosenCategory.map((bev) => {
           return <DrinkCard key={bev.id} drink={bev} />;
         })}
 
@@ -60,4 +86,5 @@ export const DrinkList = () => {
       </div>
     </>
   );
+        
 };

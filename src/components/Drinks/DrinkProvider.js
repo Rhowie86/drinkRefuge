@@ -1,7 +1,7 @@
 //This component will reach out to my api and get all of the drinks
 //This component will also handle crud functionality and update the api
 
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 
 export const DrinkContext = createContext();
 
