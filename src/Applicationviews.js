@@ -32,14 +32,17 @@ export const ApplicationViews = () => {
           <Route exact path="/drinks">
             <DrinkList />
           </Route>
+          <Route exact path ="/userDrinks">
+              <UserDrinkList />
+          </Route>
           <Route path="/drinks/create">
               <DrinkForm />
           </Route>
           <Route path="/drinks/detail/:drinkId(\d+)">
               <DrinkDetail />
           </Route>
-          <Route exact path ="/userDrinks">
-              <UserDrinkList />
+          <Route path="/drinks/edit/:drinkId(\d+)">
+              <DrinkForm />
           </Route>
                             </DrinkIngredientProvider>
                         </CategoryProvider>

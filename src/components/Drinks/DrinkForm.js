@@ -174,7 +174,7 @@ export const DrinkForm = () => {
         <div className="form-group col-sm-6">
           <label htmlFor="glassware">Glassware: </label>
           <select
-            defaultValue={drink.glasswareId}
+            value={drink.glasswareId}
             onChange={handleControlledInputChange}
             name="glasswareId"
             id="glasswareId"
@@ -196,7 +196,7 @@ export const DrinkForm = () => {
               <div className="form-group col-sm-6">
                 <label htmlFor="ingredientId">Ingredient: </label>
                 <select
-                  defaultValue={drink.ingredientId}
+                  value={drink.ingredientId}
                   onChange={(event) =>
                     handleControlledInputChangeIngredient(index, event)
                   }
@@ -214,7 +214,7 @@ export const DrinkForm = () => {
                 <div className="form-group">
                   <label htmlFor="measurementId">Measurement: </label>
                   <select
-                    defaultValue={drink.measurementId}
+                    value={drink.measurementId}
                     onChange={(event) =>
                       handleControlledInputChangeIngredient(index, event)
                     }
@@ -256,7 +256,7 @@ export const DrinkForm = () => {
         <div className="form-group col-sm-6">
           <label htmlFor="categoryId">Category: </label>
           <select
-            defaultValue={drink.categoryId}
+            value={drink.categoryId}
             onChange={handleControlledInputChange}
             name="category"
             id="categoryId"
