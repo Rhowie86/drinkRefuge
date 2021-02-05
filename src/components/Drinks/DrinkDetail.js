@@ -11,9 +11,19 @@ export const DrinkDetail = () => {
     deleteDrinkIngredient,
   } = useContext(DrinkIngredientContext);
 
+  
+        
+      
+  
+
   const [drinks, setDrink] = useState({});
 
   const { drinkId } = useParams();
+  const  userId  = parseInt(localStorage.getItem("refuge_user"))
+  
+  const enableButton = userId === drinks.userId;
+
+ 
   //filter over drink ingredients and match to the drink id THEN delete the matching ingredient object
   //THEN delete the drink object
   const handleDelete = () => {
@@ -29,6 +39,7 @@ export const DrinkDetail = () => {
     });
   };
 
+  
   useEffect(() => {
     getDrinkById(drinkId)
       .then((res) => {
@@ -41,7 +52,7 @@ export const DrinkDetail = () => {
 
   const currentDrinkIngredients = drinkIngredients.filter(
     (di) => di.drinkId === parseInt(drinkId)
-  );
+  )
 
   return (
     <section className="drinks">
@@ -74,7 +85,9 @@ export const DrinkDetail = () => {
       >
         Edit
       </button>
-      <button onClick={handleDelete}>Delete Drink</button>
+      <button className="btn btn-danger" 
+        disabled={!enableButton}
+        onClick={handleDelete}>Delete Drink</button>
       <button
         onClick={() => {
           history.push("/drinks");
