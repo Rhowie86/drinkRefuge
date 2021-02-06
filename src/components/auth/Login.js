@@ -44,6 +44,18 @@ export const Login = (props) => {
           <h1>Drink Refuge</h1>
           <h2>Sign In</h2>
           <fieldset>
+            <label htmlFor="inputEmail"> User Name </label>
+            <input
+            
+              type="username"
+              id="username"
+              className="form-control"
+              placeholder="UserName"
+              required
+              autoFocus
+            />
+          </fieldset>
+          <fieldset>
             <label htmlFor="inputEmail"> Email address </label>
             <input
               ref={email}
@@ -60,9 +72,12 @@ export const Login = (props) => {
           </fieldset>
         </form>
       </section>
-      <section className="link--register">
-        <Link to="/register">Click here to register</Link>
-      </section>
+      <button
+        onClick={(() => {
+            history.push("/register")
+        })}>
+            if you don't have an account click here
+        </button>
     </main>
   );
 };
