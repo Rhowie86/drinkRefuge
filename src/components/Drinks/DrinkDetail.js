@@ -64,13 +64,13 @@ export const DrinkDetail = () => {
   const showButtonsForUser = () => {
     return (
       <div>
-        <button
+        {/* <button
           onClick={() => {
             history.push(`/drinks/edit/${drink.id}`);
           }}
         >
           Edit
-        </button>
+        </button> */}
 
         <button
           className="btn btn-danger"
@@ -85,16 +85,9 @@ export const DrinkDetail = () => {
         >
           Back
         </button>
-        <button
-          onClick={() => {
-            history.push("/drinks");
-          }}
-        >
-          Back
-        </button>
-      </div>
-    );
-  };
+        </div>
+    )}
+  
 
   const showButtonsForNonOwner = () => {
       return (

@@ -92,7 +92,8 @@ export const DrinkForm = () => {
     const values = [...ingredientFields];
     if (values.length === 1) {
       return;
-    } else values.splice(index, 1);
+    } 
+    values.splice(index, 1);
     setIngredientFields(values);
   };
 
