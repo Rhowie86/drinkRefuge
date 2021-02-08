@@ -4,28 +4,23 @@ import { DrinkIngredientContext } from "../DrinkIngredients/DrinkIngredientsProv
 import { useParams, useHistory } from "react-router-dom";
 
 export const DrinkDetail = () => {
-  const { getDrinkById, deleteDrink } = useContext(DrinkContext);
+  const { getDrinkById, deleteDrink, addDrink } = useContext(DrinkContext);
   const {
     getDrinkIngredients,
     drinkIngredients,
     deleteDrinkIngredient,
   } = useContext(DrinkIngredientContext);
 
-  
-        
-      
-  
 
-  const [drinks, setDrink] = useState({});
+  const [drink, setDrink] = useState({});
 
   const { drinkId } = useParams();
-  const  userId  = parseInt(localStorage.getItem("refuge_user"))
-  
-  const enableButton = userId === drinks.userId;
+  const userId = parseInt(localStorage.getItem("refuge_user"));
 
- 
-  //filter over drink ingredients and match to the drink id THEN delete the matching ingredient object
-  //THEN delete the drink object
+  const enableButton = userId === drink.userId;
+
+  //   filter over drink ingredients and match to the drink id THEN delete the matching ingredient object
+  //   THEN delete the drink object
   const handleDelete = () => {
     const drinkIngredientsDelete = drinkIngredients.filter(
       (di) => di.drinkId === parseInt(drinkId)
@@ -39,7 +34,19 @@ export const DrinkDetail = () => {
     });
   };
 
-  
+  const handleAdd = () => {
+    const newDrink = { ...drink };
+    newDrink.userId = userId;
+    delete newDrink.id;
+    delete newDrink.category;
+    delete newDrink.user;
+    delete newDrink.glassware;
+    console.log("new drink", newDrink)
+    
+    return addDrink(newDrink);
+  };
+
+
   useEffect(() => {
     getDrinkById(drinkId)
       .then((res) => {
@@ -52,15 +59,72 @@ export const DrinkDetail = () => {
 
   const currentDrinkIngredients = drinkIngredients.filter(
     (di) => di.drinkId === parseInt(drinkId)
-  )
+  );
+
+  const showButtonsForUser = () => {
+    return (
+      <div>
+        <button
+          onClick={() => {
+            history.push(`/drinks/edit/${drink.id}`);
+          }}
+        >
+          Edit
+        </button>
+
+        <button
+          className="btn btn-danger"
+          onClick={handleDelete}
+        >
+          Delete Drink
+        </button>
+        <button
+          onClick={() => {
+            history.push("/drinks");
+          }}
+        >
+          Back
+        </button>
+        <button
+          onClick={() => {
+            history.push("/drinks");
+          }}
+        >
+          Back
+        </button>
+      </div>
+    );
+  };
+
+  const showButtonsForNonOwner = () => {
+      return (
+    <div>
+      <button
+        onClick={() => {
+          history.push("/drinks")
+        }}
+      >
+        Back
+      </button>
+      <button
+        onClick={() => {
+          handleAdd()
+          history.push("/userDrinks")
+        }}
+      >
+        Add drink to user list
+      </button>
+    </div> 
+      )
+  }
 
   return (
     <section className="drinks">
-      <h3 className="drinks__name">{drinks.drinkName}</h3>
+      <h3 className="drinks__name">{drink.drinkName}</h3>
 
       <div className="drinks__category">
         <h2>Category: </h2>
-        <ul>{drinks.category?.categoryName}</ul>
+        <ul>{drink.category?.categoryName}</ul>
       </div>
       <div className="drinks__ingredient">
         <h2>Ingredients: </h2>
@@ -75,26 +139,14 @@ export const DrinkDetail = () => {
           })}
         </ul>
         <div className="drinks__user">
-          <h4>Created by: {drinks.user?.name}</h4>
+          <h4>Created by: {drink.user?.name}</h4>
         </div>
       </div>
-      <button
-        onClick={() => {
-          history.push(`/drinks/edit/${drinks.id}`);
-        }}
-      >
-        Edit
-      </button>
-      <button className="btn btn-danger" 
-        disabled={!enableButton}
-        onClick={handleDelete}>Delete Drink</button>
-      <button
-        onClick={() => {
-          history.push("/drinks");
-        }}
-      >
-        Back
-      </button>
+      <div>
+        {enableButton ? showButtonsForUser() : showButtonsForNonOwner()}
+      </div>
     </section>
   );
 };
+
+// {enableButton ? function for current owner : function for not owner}

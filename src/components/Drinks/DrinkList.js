@@ -3,12 +3,10 @@ import { useHistory } from "react-router-dom";
 import { DrinkContext } from "./DrinkProvider";
 import { DrinkCard } from "./DrinkCard";
 import { CategoryContext } from "../Category/CategoryProvider";
-import { UserContext } from "../Users/UserProvider";
 
 export const DrinkList = () => {
   const { drinks, getDrinks } = useContext(DrinkContext);
   const { category, getCategory } = useContext(CategoryContext);
-  const { user, getUsers } = useContext(UserContext);
 
   const [filteredCategory, setFilteredCategory] = useState(0)
 
@@ -26,7 +24,6 @@ export const DrinkList = () => {
   useEffect(() => {
     getDrinks()
       .then(getCategory)
-      .then(getUsers);
   }, []);
 
   const [ chosenCategory, setChosenCategory] = useState([])

@@ -7,9 +7,6 @@ export const NavBar = (props) => {
     const history = useHistory()
     return (
         <ul className="navbar">
-            <li className="navbar__item active">
-                <Link className="navbar__link" to="/">Home</Link>
-            </li>
             <li className="navbar__item">
                 <Link className="navbar__link" to="/Drinks">Cocktail Recipe List</Link>
             </li>

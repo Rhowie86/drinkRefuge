@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState, Fragment } from "react";
 import { DrinkContext } from "./DrinkProvider";
-import { UserContext } from "../Users/UserProvider";
 import { GlasswareContext } from "../Glassware/GlasswareProvider";
 import { IngredientContext } from "../Ingredients/IngredientProvider";
 import { MeasurementContext } from "../Measurements/MeasurementProvider";
@@ -13,7 +12,6 @@ export const DrinkForm = () => {
   const { addDrink, getDrinkById, updateDrink, getDrinks } = useContext(
     DrinkContext
   );
-  const { users, getUsers } = useContext(UserContext);
   const { measurement, getMeasurements } = useContext(MeasurementContext);
   const { ingredient, getIngredients } = useContext(IngredientContext);
   const { glassware, getGlassware } = useContext(GlasswareContext);
@@ -53,7 +51,6 @@ export const DrinkForm = () => {
 
   useEffect(() => {
     getDrinks()
-      .then(getUsers)
       .then(getGlassware)
       .then(getIngredients)
       .then(getMeasurements)
@@ -137,7 +134,6 @@ export const DrinkForm = () => {
 
   useEffect(() => {
     getDrinks()
-      .then(getUsers)
       .then(() => {
         if (drinkId) {
           getDrinkById(drinkId).then((bev) => {
