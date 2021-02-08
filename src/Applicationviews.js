@@ -22,6 +22,7 @@ import { UserDrinkList } from "./components/Drinks/UserDrinkList"
 export const ApplicationViews = () => {
   return (
     <>
+
       <DrinkProvider>
         <UserProvider>
             <GlasswareProvider>

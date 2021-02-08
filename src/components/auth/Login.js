@@ -76,7 +76,7 @@ export const Login = (props) => {
         onClick={(() => {
             history.push("/register")
         })}>
-            if you don't have an account click here
+            Register
         </button>
     </main>
   );
