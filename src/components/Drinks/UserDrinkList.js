@@ -6,12 +6,10 @@ import { UserContext } from "../Users/UserProvider";
 
 export const UserDrinkList = () => {
   const { drinks, getDrinks } = useContext(DrinkContext);
-  const { user, getUsers } = useContext(UserContext);
   const userId = parseInt(localStorage.getItem("refuge_user"))
 
   useEffect(() => {
     getDrinks()
-      .then(getUsers);
   }, []);
 
   const history = useHistory();
