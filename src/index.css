@@ -1,17 +1,58 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: black;
-  color: crimson;
+  background-color: slategray;
 }
 
+.card-body {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Nanum Gothic', sans-serif;
 
+}
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.head-img {
+  background-image: url("./images/damask.jpg");
+  height: 6em;
+}
+
+.category-sort {
+  display: flex;
+}
+
+.category-dropdown {
+  display: flex !important;
+  width: 25% !important;
+}
+
+.btn-add {
+  display: flex;
+  margin-left: 5%;
+}
+
+.btn-view-user-list {
+  display: flex;
+  margin-left: 5%;
+}
+
+.drinks__header {
+  color: rgb(255, 198, 77) !important;
+  margin-bottom: 1%;
+}
+
+.drinks {
+  display: flex;
+  flex-direction: column;
+  margin-left: 8%;
+  margin-bottom:3%;
+}
+
+.drinks__buttons {
+  display: flex;
+  margin-bottom: 3%;
+}
+
+.drinks__header {
+  display: flex;
+  margin-left: 6%;
+  margin-top: 1%;
+  font-family: 'Nanum Gothic', sans-serif;
 }
