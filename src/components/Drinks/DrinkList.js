@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Button } from 'reactstrap';
 import { useHistory } from "react-router-dom";
 import { DrinkContext } from "./DrinkProvider";
 import { DrinkCard } from "./DrinkCard";
@@ -43,14 +44,22 @@ export const DrinkList = () => {
 
   return (
     <>
-      <h2>Cocktail Recipe List</h2>
+    <body>
+      <div className="head-img"></div>
+    <div className="drinks-list">
+      <div className="drinks__header">
+      <h2>All Cocktails</h2>
+      </div>
       <div className="category-sort">
       <select
+            className="cateogry-dropdown"
             defaultValue={0}
             onChange={handleControlledInputChange}
             name="categoryId"
             id="categoryId"
             className="form-control"
+            style={{width: "25%", marginLeft:"10%", marginBottom:"3%"}}
+            
           >
             <option value="0">Select a category</option>
             {category.map((c) => (
@@ -64,23 +73,28 @@ export const DrinkList = () => {
         {chosenCategory.map((bev) => {
           return <DrinkCard key={bev.id} drink={bev} />;
         })}
-
-        <button
-          className="btn btn-success"
+      </div>
+      <div className="drinks__buttons">
+        <Button
+          className="btn-add"
+          color="secondary"
           onClick={() => {
             history.push("/drinks/create");
           }}
         >
           Add a drink recipe
-        </button>
-        <button
-          className="btn btn-primary"
+        </Button>
+        <Button
+          className="btn-view-user-list"
+          color="secondary"
           onClick={() => {
             history.push("/userDrinks")
           }}>
             View My Drinks
-          </button>
+          </Button>
       </div>
+      </div>
+      </body>
     </>
   );
         

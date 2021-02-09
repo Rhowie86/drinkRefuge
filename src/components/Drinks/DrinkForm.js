@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState, Fragment } from "react";
+
 import { DrinkContext } from "./DrinkProvider";
 import { GlasswareContext } from "../Glassware/GlasswareProvider";
 import { IngredientContext } from "../Ingredients/IngredientProvider";
@@ -147,7 +148,11 @@ export const DrinkForm = () => {
       });
   }, []);
 
+ 
+
   return (
+
+    
     <div>
       <h2 className="drinkForm__title">
         {drinkId ? "Edit Drink" : "Add Drink"}
@@ -164,9 +169,10 @@ export const DrinkForm = () => {
             className="form-control"
             placeholder="Drink name"
             value={drink.drinkName}
-          />
+            />
         </div>
       </fieldset>
+            
       <fieldset>
         <div className="form-group col-sm-6">
           <label htmlFor="glassware">Glassware: </label>
@@ -184,8 +190,8 @@ export const DrinkForm = () => {
               </option>
             ))}
           </select>
-        </div>
-      </fieldset>
+        </div> 
+      </fieldset> 
       <fieldset>
         <div className="form-row">
           {ingredientFields.map((ingredientField, index) => (
@@ -248,7 +254,6 @@ export const DrinkForm = () => {
           ))}
         </div>
       </fieldset>
-      <fieldset></fieldset>
       <fieldset>
         <div className="form-group col-sm-6">
           <label htmlFor="categoryId">Category: </label>
@@ -281,4 +286,4 @@ export const DrinkForm = () => {
       </button>
     </div>
   );
-};
+}

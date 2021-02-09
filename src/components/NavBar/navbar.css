@@ -7,4 +7,16 @@
 .navbar__item {
     flex-basis: 20%;
     list-style-type: none;
+    
+}
+
+.nav-main {
+    font-family: 'Tangerine', cursive;
+    color: rgb(243, 136, 253) !important;
+    font-size: 2rem !important;
+}
+
+.navbar__link {
+    font-family: 'Nanum Gothic', sans-serif;
+    color: rgb(243, 136, 253) !important;
 }
