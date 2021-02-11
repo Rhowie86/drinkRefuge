@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import { Button } from "reactstrap"
 import { useHistory } from "react-router-dom";
 import { DrinkContext } from "./DrinkProvider";
 import { DrinkCard } from "./DrinkCard";
@@ -19,28 +20,37 @@ export const UserDrinkList = () => {
 
   return (
     <>
-      <h2>My Recipe List</h2>
+    <body>
+    
+    <div className="head-img"></div>
+    <div className="user-drink-list">
+      <div className="user-drink-header"><h2>My Recipe List</h2></div>
       <div className="drinks">
         {currentUserDrinks.map((userDrink) => {
           return <DrinkCard key={userDrink.id} drink={userDrink} />;
-        })}
+        })}</div>
 
-        <button
-          className="btn btn-success"
+        <div className="drinks__buttons">
+        <Button
+          className="btn-add"
+          color="secondary"
           onClick={() => {
             history.push("/drinks/create");
           }}
         >
           Add a drink recipe
-        </button>
-        <button
-            className="btn btn-primary"
+        </Button>
+        <Button
+            className="btn-back"
+            color="secondary"
             onClick={() => {
                 history.push("/drinks")
             }}>
                 Back
-            </button>
+            </Button>
       </div>
+      </div>
+      </body>
     </>
   );
 };

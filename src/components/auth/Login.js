@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
@@ -28,23 +29,29 @@ export const Login = (props) => {
   };
 
   return (
+      
     <main className="container--login">
       <dialog className="dialog dialog--auth" ref={existDialog}>
         <div>User does not exist</div>
-        <button
+        <Button
+          color="primary"
           className="button--close"
           onClick={(e) => existDialog.current.close()}
         >
           Close
-        </button>
+        </Button>
       </dialog>
 
       <section>
         <form className="form--login" onSubmit={handleLogin}>
-          <h1>Drink Refuge</h1>
-          <h2>Sign In</h2>
+        <div className="video">  
+        <video className="video-itself" width="320" height="240" autoPlay muted>
+            <source src="/images/drinkRefuge.mp4" type="video/mp4" />
+        </video> 
+        </div>
+        
           <fieldset>
-            <label htmlFor="inputEmail"> User Name </label>
+            <label className="userName" htmlFor="inputEmail"> User Name </label>
             <input
             
               type="username"
@@ -56,7 +63,7 @@ export const Login = (props) => {
             />
           </fieldset>
           <fieldset>
-            <label htmlFor="inputEmail"> Email address </label>
+            <label className="emailLabel" htmlFor="inputEmail"> Email address </label>
             <input
               ref={email}
               type="email"
@@ -79,5 +86,7 @@ export const Login = (props) => {
             Register
         </button>
     </main>
+
+    
   );
 };

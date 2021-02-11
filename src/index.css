@@ -1,11 +1,16 @@
 body {
-  background-color: slategray;
+  background-color: #708090;
 }
+
+/* for cards */
 
 .card-body {
   display: flex;
   flex-direction: column;
   font-family: 'Nanum Gothic', sans-serif;
+  box-shadow: 5px 10px;
+  margin-bottom: 5%;
+  margin-top: 3%;
 
 }
 
@@ -14,13 +19,17 @@ body {
   height: 6em;
 }
 
+/* drink list */
+
 .category-sort {
   display: flex;
+  margin-bottom: 2%;
 }
 
 .category-dropdown {
   display: flex !important;
-  width: 25% !important;
+  /* margin-bottom: 2% !important; */
+  /* width: 50% !important; */
 }
 
 .btn-add {
@@ -34,25 +43,179 @@ body {
 }
 
 .drinks__header {
-  color: rgb(255, 198, 77) !important;
-  margin-bottom: 1%;
+  color: rgb(233, 194, 67) !important;
+  margin-bottom: 2%;
+  margin-top: 4%;
+  display: flex;
+  align-items: center;
+  font-family: 'Nanum Gothic', sans-serif;
 }
 
 .drinks {
   display: flex;
   flex-direction: column;
-  margin-left: 8%;
   margin-bottom:3%;
+  align-items: center;
+}
+
+.drinks-list {
+  display: flex;
+  flex-direction: column;
+  /* flex-basis: 35%; */
+  align-items: center;
+  justify-content: space-between;
 }
 
 .drinks__buttons {
   display: flex;
   margin-bottom: 3%;
+  
 }
 
-.drinks__header {
+.btn-add {
+  display: flex;
+  margin-left: 5%;
+}
+
+.btn-delete {
+  display: flex;
+  margin-left: 5%;
+}
+
+/* .drinks__header {
   display: flex;
   margin-left: 6%;
   margin-top: 1%;
   font-family: 'Nanum Gothic', sans-serif;
+} */
+
+/* user list */
+
+.user-drink-header {
+  color: rgb(233, 194, 67) !important;
+  margin-bottom: 1%;
+  display: flex;
+  align-items: center;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+.user-drink-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-back {
+  display: flex;
+  margin-left: 5%;
+}
+
+.btn-add-user {
+  display: flex;
+  margin-left: 5%;
+}
+
+/* drink details */
+
+.drink-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(88, 102, 114) !important;
+  box-shadow: 5px 10px;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+
+
+.drinks__ingredient {
+  margin-bottom: 4%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.drinks__name {
+  font-family: 'Tangerine', cursive;
+  color: rgb(233, 194, 67) !important;
+  font-size: 4rem !important;
+  font-weight: bold !important;
+  margin-top: 3%
+}
+
+.category {
+  color: rgb(233, 194, 67) !important;
+  margin-bottom: 3%;
+  display: flex;
+  align-items: center;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+.drinks__ingredient {
+  font-family: 'Nanum Gothic', sans-serif;
+  color: rgb(233, 194, 67) !important;
+  margin-top: 4%;
+
+}
+
+.ingredient__name {
+  font-family: 'Nanum Gothic', sans-serif;
+  color:rgb(243, 136, 253) !important;
+  list-style: none;
+}
+
+
+.measurement {
+  font-family: 'Nanum Gothic', sans-serif;
+  color:rgb(243, 136, 253) !important;
+  list-style: none;
+}
+
+.drinks__user {
+  color: whitesmoke;
+}
+
+.details__buttons {
+  margin-top: 2%;
+}
+
+/* login */
+
+.login-header {
+  font-family: 'Tangerine', cursive;
+  font-size: 4em;
+  display: flex;
+  margin-left: 35%;
+  margin-top: 5%;
+  color:rgb(243, 136, 253) !important;
+}
+
+
+/* video */
+
+.container--login {
+  background-color: black;
+  padding-bottom: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.video {
+  display: flex;
+  align-items: center;
+}
+
+.video-itself {
+  margin-left: 35%;
+}
+
+.userName {
+  color: hotpink;
+}
+
+.emailLabel {
+  color: hotpink;
 }

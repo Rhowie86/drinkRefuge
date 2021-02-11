@@ -58,7 +58,7 @@ export const DrinkList = () => {
             name="categoryId"
             id="categoryId"
             className="form-control"
-            style={{width: "25%", marginLeft:"10%", marginBottom:"3%"}}
+            // style={{width: "25%", marginLeft:"10%", marginBottom:"3%"}}
             
           >
             <option value="0">Select a category</option>

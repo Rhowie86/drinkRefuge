@@ -7,10 +7,11 @@ export const DrinkCard = ({ drink }) => {
   return (
 
     <div>
-      <Card  className="card-body" body style={{width: "45%", marginLeft:"2%", marginBottom:"3%"}}>
+      <Card  className="card-body" body> 
+      {/* style={{width: "45%", marginLeft:"2%", marginBottom:"3%"}}> */}
         <CardTitle tag="h5">{drink.drinkName}</CardTitle>
         <CardText>Category: {drink.category?.categoryName} drink</CardText>
-        <Button style={{width: "80%", marginLeft:"6%", marginBottom:"3%"}} onClick={()=>{history.push(`/drinks/detail/${drink.id}`)}}>View Cocktail Details</Button>
+        <Button style={{width: "80%", marginLeft:"6%", marginBottom:"3%"}} onClick={()=>{history.push(`/drinks/detail/${drink.id}`)}}>View Details</Button>
       </Card>
     </div>
 

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Button } from "reactstrap"
 import { DrinkContext } from "./DrinkProvider";
 import { DrinkIngredientContext } from "../DrinkIngredients/DrinkIngredientsProvider";
 import { useParams, useHistory } from "react-router-dom";
@@ -63,7 +64,7 @@ export const DrinkDetail = () => {
 
   const showButtonsForUser = () => {
     return (
-      <div>
+        <div className="drinks__buttons">
         {/* <button
           onClick={() => {
             history.push(`/drinks/edit/${drink.id}`);
@@ -72,73 +73,94 @@ export const DrinkDetail = () => {
           Edit
         </button> */}
 
-        <button
-          className="btn btn-danger"
-          onClick={handleDelete}
-        >
-          Delete Drink
-        </button>
-        <button
+        <Button
+          className="btn-back"
+          color="secondary"
           onClick={() => {
             history.push("/drinks");
           }}
         >
           Back
-        </button>
+        </Button>
+
+        <Button
+          className="btn-delete"
+          color="secondary"
+          onClick={handleDelete}
+        >
+          Delete Drink
+        </Button>
         </div>
     )}
   
 
   const showButtonsForNonOwner = () => {
       return (
-    <div>
-      <button
+    <div className="drinks__buttons">
+      <Button
+        className="btn-back"
+        color="secondary"
         onClick={() => {
           history.push("/drinks")
         }}
       >
         Back
-      </button>
-      <button
+      </Button>
+      <Button
+        className="btn-add-user"
+        color="secondary"
         onClick={() => {
           handleAdd()
           history.push("/userDrinks")
         }}
       >
-        Add drink to user list
-      </button>
+        Add to my list
+      </Button>
     </div> 
       )
   }
 
   return (
-    <section className="drinks">
-      <h3 className="drinks__name">{drink.drinkName}</h3>
+      <body>
+    <div className="head-img"></div>
+    <section className="drink-details">
+      <h2 className="drinks__name">{drink.drinkName}</h2>
 
       <div className="drinks__category">
-        <h2>Category: </h2>
-        <ul>{drink.category?.categoryName}</ul>
+        <h4 className="category">Category: {drink.category?.categoryName}</h4>
+        
       </div>
       <div className="drinks__ingredient">
-        <h2>Ingredients: </h2>
-        <ul>
+        <h2 className="drinks__ingredient">Ingredients </h2>
+        
           {currentDrinkIngredients.map((bev) => {
-            return (
-              <li key={bev.id}>
-                Ingredient:{bev.ingredient.ingredientName} Measurement:{" "}
-                {bev.measurement.measurementValue}
+            return ( <>
+                <div>
+                    <ul>
+              <li className="ingredient__name" key={bev.id}>
+              Ingredient: {bev.ingredient.ingredientName} 
               </li>
-            );
-          })}
-        </ul>
+              </ul>
+              </div>
+              <div>
+                  <ul>
+                  <li className="measurement">
+                  Measurement: {bev.measurement.measurementValue} oz.
+                  </li>
+                  </ul>
+              </div>
+          </>  );
+        })}
+        </div>
+        
         <div className="drinks__user">
           <h4>Created by: {drink.user?.name}</h4>
         </div>
-      </div>
-      <div>
+      <div className="details__buttons">
         {enableButton ? showButtonsForUser() : showButtonsForNonOwner()}
       </div>
     </section>
+    </body>
   );
 };
 
