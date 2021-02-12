@@ -1,5 +1,5 @@
 body {
-  background-color: #708090;
+  background-color: black;
 }
 
 /* for cards */
@@ -8,14 +8,14 @@ body {
   display: flex;
   flex-direction: column;
   font-family: 'Nanum Gothic', sans-serif;
-  box-shadow: 5px 10px;
+  box-shadow: 5px 10px #02cefc;
   margin-bottom: 5%;
   margin-top: 3%;
 
 }
 
 .head-img {
-  background-image: url("./images/damask.jpg");
+  /* background-image: url("./images/damask.jpg"); */
   height: 6em;
 }
 
@@ -43,7 +43,7 @@ body {
 }
 
 .drinks__header {
-  color: rgb(233, 194, 67) !important;
+  color: #fc02ce !important;
   margin-bottom: 2%;
   margin-top: 4%;
   display: flex;
@@ -92,7 +92,7 @@ body {
 /* user list */
 
 .user-drink-header {
-  color: rgb(233, 194, 67) !important;
+  color: #fc02ce !important;
   margin-bottom: 1%;
   display: flex;
   align-items: center;
@@ -121,8 +121,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(88, 102, 114) !important;
-  box-shadow: 5px 10px;
+  background-color: #22292e !important;
+  box-shadow: 5px 10px #1e7a8f;
   margin-left: 25%;
   margin-right: 25%;
   margin-top: 4%;
@@ -139,14 +139,14 @@ body {
 
 .drinks__name {
   font-family: 'Tangerine', cursive;
-  color: rgb(233, 194, 67) !important;
+  color: #fc02ce !important;
   font-size: 4rem !important;
   font-weight: bold !important;
   margin-top: 3%
 }
 
 .category {
-  color: rgb(233, 194, 67) !important;
+  color: #fc02ce !important;
   margin-bottom: 3%;
   display: flex;
   align-items: center;
@@ -155,21 +155,21 @@ body {
 
 .drinks__ingredient {
   font-family: 'Nanum Gothic', sans-serif;
-  color: rgb(233, 194, 67) !important;
+  color: #fc02ce !important;
   margin-top: 4%;
 
 }
 
 .ingredient__name {
   font-family: 'Nanum Gothic', sans-serif;
-  color:rgb(243, 136, 253) !important;
+  color: #02cefc !important;
   list-style: none;
 }
 
 
 .measurement {
   font-family: 'Nanum Gothic', sans-serif;
-  color:rgb(243, 136, 253) !important;
+  color: #02cefc !important;
   list-style: none;
 }
 
@@ -189,7 +189,7 @@ body {
   display: flex;
   margin-left: 35%;
   margin-top: 5%;
-  color:rgb(243, 136, 253) !important;
+  color:#fc02ce !important;
 }
 
 
@@ -213,9 +213,75 @@ body {
 }
 
 .userName {
-  color: hotpink;
+  color: #fc02ce;
 }
 
 .emailLabel {
-  color: hotpink;
+  color: #fc02ce;
+}
+
+
+/* form */
+
+
+
+
+/* home */
+
+.home-btns {
+  display: flex;
+  align-items: center;
+  margin-left: 42%;
+}
+
+.home-btn-login {
+  margin-right: 4%;
+}
+
+.btn-signin {
+  margin-top: 4%;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-register {
+  margin-top: 4%;
+}
+
+.label-email {
+  font-family: 'Nanum Gothic', sans-serif !important;
+  color:  #02cefc !important;
+}
+
+.label-user {
+  font-family: 'Nanum Gothic', sans-serif !important;
+  color: #02cefc !important;
+}
+
+.drink-form {
+  display: flex;
+  flex-direction: column;
+  margin-left: 35%;
+  color: #fc02ce;
+}
+
+.btn-form-container {
+  display: flex;
+  margin-left: 15%;
+  margin-bottom: 5%;
+}
+
+.drinkForm__title {
+  margin-left: 15%;
+  margin-top: 4%;
+  color: #02cefc
+}
+
+.ingredient-container {
+  display: flex;
+  flex-direction: row;
 }

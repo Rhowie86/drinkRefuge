@@ -31,7 +31,7 @@ export const DrinkDetail = () => {
     });
 
     deleteDrink(drinkId).then(() => {
-      history.push("/drinks");
+      history.push("/userDrinks");
     });
   };
 
@@ -135,7 +135,7 @@ export const DrinkDetail = () => {
         
           {currentDrinkIngredients.map((bev) => {
             return ( <>
-                <div>
+                <div className="ingredient-container">
                     <ul>
               <li className="ingredient__name" key={bev.id}>
               Ingredient: {bev.ingredient.ingredientName} 

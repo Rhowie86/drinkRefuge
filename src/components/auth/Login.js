@@ -21,7 +21,7 @@ export const Login = (props) => {
     existingUserCheck().then((exists) => {
       if (exists) {
         localStorage.setItem("refuge_user", exists.id);
-        history.push("/drinks");
+        history.push("/");
       } else {
         existDialog.current.showModal();
       }
@@ -75,16 +75,22 @@ export const Login = (props) => {
             />
           </fieldset>
           <fieldset>
-            <button type="submit">Sign in</button>
+            <Button 
+            className="btn-signin"
+            color="secondary"
+            type="submit">
+                Sign in
+            </Button>
           </fieldset>
         </form>
       </section>
-      <button
+      <Button
+        color="secondary"
         onClick={(() => {
             history.push("/register")
         })}>
             Register
-        </button>
+        </Button>
     </main>
 
     
