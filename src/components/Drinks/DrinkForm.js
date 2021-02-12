@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState, Fragment } from "react";
+import { Button } from "reactstrap"
 
 import { DrinkContext } from "./DrinkProvider";
 import { GlasswareContext } from "../Glassware/GlasswareProvider";
@@ -153,7 +154,7 @@ export const DrinkForm = () => {
   return (
 
     
-    <div>
+    <div className="drink-form">
       <h2 className="drinkForm__title">
         {drinkId ? "Edit Drink" : "Add Drink"}
       </h2>
@@ -273,9 +274,11 @@ export const DrinkForm = () => {
           </select>
         </div>
       </fieldset>
-
-      <button
-        className="btn btn-success"
+      
+      <div className="btn-form-container">
+      <Button
+        className="btn-form"
+        color="secondary"
         disabled={isLoading}
         onClick={(event) => {
           event.preventDefault();
@@ -283,7 +286,9 @@ export const DrinkForm = () => {
         }}
       >
         {drinkId ? "Save Drink" : "Add Drink"}
-      </button>
+      </Button>
+      </div>
+      
     </div>
   );
 }

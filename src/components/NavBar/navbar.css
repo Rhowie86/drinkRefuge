@@ -12,11 +12,11 @@
 
 .nav-main {
     font-family: 'Tangerine', cursive;
-    color: rgb(243, 136, 253) !important;
+    color: #fc02ce !important;
     font-size: 3rem !important;
 }
 
 .navbar__link {
     font-family: 'Nanum Gothic', sans-serif;
-    color: rgb(243, 136, 253) !important;
+    color: #fc02ce !important;
 }

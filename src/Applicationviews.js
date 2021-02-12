@@ -13,6 +13,7 @@ import { MeasurementProvider } from "./components/Measurements/MeasurementProvid
 import { CategoryProvider } from "./components/Category/CategoryProvider";
 import { DrinkIngredientProvider } from "./components/DrinkIngredients/DrinkIngredientsProvider";
 import { UserDrinkList } from "./components/Drinks/UserDrinkList"
+import { Home } from "./home"
 
 
 
@@ -22,7 +23,10 @@ import { UserDrinkList } from "./components/Drinks/UserDrinkList"
 export const ApplicationViews = () => {
   return (
     <>
-
+      <Route exact path = "/">
+        <Home />
+      </Route>
+      
       <DrinkProvider>
         <UserProvider>
             <GlasswareProvider>

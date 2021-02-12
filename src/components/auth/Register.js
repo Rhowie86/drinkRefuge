@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { Button } from "reactstrap"
 import { useHistory } from "react-router-dom";
 
 export const Register = (props) => {
@@ -42,15 +43,16 @@ export const Register = (props) => {
   };
 
   return (
-    <main style={{ textAlign: "center" }}>
+    <main className="register-form">
+
       <dialog className="dialog dialog--password" ref={conflictDialog}>
         <div>Account with that email address already exists</div>
-        <button
+        <Button
           className="button--close"
           onClick={(e) => conflictDialog.current.close()}
         >
           Close
-        </button>
+        </Button>
       </dialog>
 
       <form className="form--login" onSubmit={handleRegister}>
@@ -61,7 +63,7 @@ export const Register = (props) => {
             ref={userName}
             type="text"
             name="userName"
-            className="form-control"
+            className="form-control label-user"
             placeholder="User name"
             required
             autoFocus
@@ -73,13 +75,16 @@ export const Register = (props) => {
             ref={email}
             type="email"
             name="email"
-            className="form-control"
+            className="form-control label-email"
             placeholder="Email address"
             required
           />
         </fieldset>
         <fieldset>
-          <button type="submit"> Sign in </button>
+          <Button 
+          className="btn-register"
+          color="secondary"
+          type="submit"> Register </Button>
         </fieldset>
       </form>
     </main>
