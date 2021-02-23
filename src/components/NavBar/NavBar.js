@@ -46,10 +46,10 @@ const ShowLogoutButton = () => {
           <Nav className="mr-auto" navbar>
             <NavItem>
            
-                <NavLink className="navbar__link" href="/Drinks">All Cocktails</NavLink>
+                <NavLink className="navbar__link" href="/Drinks">All Drinks</NavLink>
                 </NavItem>
                 <NavItem>
-                <NavLink className="navbar__link" href="/userDrinks">My Cocktails</NavLink>
+                <NavLink className="navbar__link" href="/userDrinks">My Drinks</NavLink>
                 </NavItem>
             {/* <NavItem>
            {userId ? ShowLogoutButton() : <div></div>}

@@ -121,6 +121,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* text-align: center; */
   background-color: #22292e !important;
   box-shadow: 5px 10px #1e7a8f;
   margin-left: 25%;
@@ -143,6 +144,7 @@ body {
   font-size: 4rem !important;
   font-weight: bold !important;
   margin-top: 3%
+  
 }
 
 .category {
@@ -164,6 +166,7 @@ body {
   font-family: 'Nanum Gothic', sans-serif;
   color: #02cefc !important;
   list-style: none;
+  text-align: left;
 }
 
 
@@ -228,10 +231,16 @@ body {
 
 /* home */
 
+.video {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+}
+
 .home-btns {
   display: flex;
   align-items: center;
-  margin-left: 42%;
+  margin-left: 39%;
 }
 
 .home-btn-login {
@@ -285,3 +294,8 @@ body {
   display: flex;
   flex-direction: row;
 }
+
+.glassware {
+  list-style: none;
+}
+
